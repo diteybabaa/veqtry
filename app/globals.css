@@ -1,0 +1,197 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-roboto), "Roboto", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: #05121a;
+  color: #202124;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- stage / hero background ---------- */
+
+.stage {
+  /* THE ONE KNOB: the card's base font size.
+     Everything inside the card is sized in em, so this scales the whole card.
+     min 15px | grows with viewport width | capped at 22px */
+  --card-font: clamp(15px, 1.5vw, 22px);
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px;
+  isolation: isolate;
+}
+
+.stage__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: #05121a;
+  background-image: url("/hero.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.stage__photo {
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.stage__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    120% 90% at 42% 50%,
+    rgba(3, 14, 20, 0.28) 0%,
+    rgba(3, 14, 20, 0.04) 45%,
+    rgba(3, 14, 20, 0) 70%
+  );
+  pointer-events: none;
+}
+
+/* ---------- verification card ---------- */
+
+.card {
+  font-size: var(--card-font);
+  position: relative;
+  width: 20.5em; /* 328px at a 16px base */
+  max-width: 100%;
+  padding: 1.625em 1.5em;
+  border-radius: 0.5em;
+  background: #dbdee2;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    0 0.5em 1.5em rgba(0, 0, 0, 0.28);
+  animation: card-in 0.32s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.card__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  height: 1.125em;
+  margin: 0 0 1.75em;
+}
+
+.card__brand svg {
+  flex: 0 0 auto;
+  width: 1.19em;
+  height: 1.125em;
+}
+
+.card__brand-name {
+  font-size: 0.625em;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  color: #808a96;
+}
+
+.card__title {
+  margin: 0 0 0.61em;
+  font-size: 1.125em;
+  line-height: 1.222;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: #0f1319;
+}
+
+.card__desc {
+  margin: 0 0 1.524em;
+  max-width: 25em;
+  font-size: 0.656em;
+  line-height: 1.524;
+  letter-spacing: 0.1px;
+  color: #5f6368;
+}
+
+.card__legal {
+  margin: 1.125em 0 0;
+  max-width: 25em;
+  font-size: 0.5em;
+  line-height: 1.375;
+  letter-spacing: 0.1px;
+  color: #6b7682;
+}
+
+.card__legal a {
+  color: #4285f4;
+}
+
+.card__legal a:hover {
+  text-decoration: underline;
+}
+
+/* Server-side reCAPTCHA verdict failed — same slot as the legal line. */
+.card__notice {
+  margin: 0.875em 0 0;
+  max-width: 25em;
+  font-size: 0.5625em;
+  line-height: 1.4;
+  color: #b3261e;
+}
+
+/* Development warning: the widget on screen is the demo replica. */
+.card__notice--info {
+  color: #8a5a00;
+}
+
+.card__notice code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95em;
+}
+
+/* Holds the widget's footprint while /api/captcha answers, so nothing jumps. */
+.card__captcha-skeleton {
+  width: 12.75em;
+  height: 3.125em;
+  border-radius: 0.1875em;
+  background: #f9f9f9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 100%;
+  }
+}

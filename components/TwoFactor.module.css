@@ -1,0 +1,443 @@
+/* The shell (page / footer / chip / pill buttons) comes from
+   GoogleSignIn.module.css; this file only lays out the 2-step card. */
+
+.card {
+  display: flex;
+  min-height: 29.2em;
+}
+
+.grid {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 0 2.2em;
+  min-width: 0;
+}
+
+/* --------------------------------------------------------- left column */
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.logo {
+  display: block;
+  width: 2.44em;
+  height: 2.44em;
+}
+
+.title {
+  margin: 0.95em 0 0;
+  font-size: 2.5em;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: #1f1f1f;
+}
+
+.subtitle {
+  max-width: 26em;
+  margin: 1.25em 0 0;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #1f1f1f;
+}
+
+.resend {
+  margin-top: auto;
+  margin-bottom: 2.4em;
+  padding: 0.2em 0;
+  font-family: inherit;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #0b57d0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.resend:hover {
+  text-decoration: underline;
+}
+
+/* The copy-level "Resend it" only exists on narrow screens. */
+.mobileResend {
+  display: none;
+}
+
+/* -------------------------------------------------------- right column */
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-width: 0;
+}
+
+/* The copy blocks stay narrow like the real page (buttons still hug the
+   right edge of the column). */
+.panelEyebrow,
+.panelTitle,
+.panelBody {
+  max-width: 24.5em;
+}
+
+.tapPanel {
+  display: flex;
+  flex-direction: column;
+  /* Copy stays flush left in the column while the digits keep their own
+     centred line above it. */
+  align-items: stretch;
+  min-height: 100%;
+  padding-top: 4.6em;
+}
+
+.tapPanel .panelTitle,
+.tapPanel .panelBody {
+  width: 100%;
+  text-align: left;
+}
+
+.tapPanel .panelBody {
+  max-width: 24.5em;
+}
+
+.tapPanel .actions {
+  width: 100%;
+}
+
+.tapDigits {
+  width: 100%;
+  /* Sits visually connected to the heading below instead of floating. */
+  margin-bottom: 0.95em;
+  font-size: 2.95em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #1f1f1f;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.panelEyebrow {
+  margin: 0 0 1.1em;
+  font-size: 0.875em;
+  line-height: 1.4;
+  color: #444746;
+}
+
+.panelTitle {
+  margin: 0;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #1f1f1f;
+}
+
+.panelBody {
+  margin: 0.95em 0 0;
+  font-size: 0.875em;
+  line-height: 1.55;
+  color: #1f1f1f;
+}
+
+.panelBody strong {
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+.panelBody a {
+  color: #0b57d0;
+  font-weight: 500;
+}
+
+.panelBody a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------- actions */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.4em;
+  margin-top: auto;
+  padding-top: 2.6em;
+}
+
+.link {
+  padding: 0.2em 0;
+  font-family: inherit;
+  font-size: 0.875em;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #0b57d0;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------- phone / code */
+
+.codeForm {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding-top: 3.35em;
+}
+
+.phoneRow {
+  display: flex;
+  align-items: center;
+  margin-top: 2.55em;
+}
+
+/* In the phone-number row the field should take the full width. */
+.phoneRow .field {
+  flex: 1 1 auto;
+}
+
+/* Breathing room so the floating label clears the paragraph above it. */
+.codeForm > .field {
+  margin-top: 1.15em;
+}
+
+/* "2FA Auth" — compact heading over the Google Authenticator code field. */
+.authForm .authHeading {
+  max-width: none;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #1f1f1f;
+}
+
+.authForm .panelBody {
+  max-width: none;
+  margin-top: 0.4em;
+}
+
+.field {
+  position: relative;
+  /* Fixed height: inside the full-height code form a growing flex item would
+     stretch the one-line input into a tall box. */
+  flex: 0 0 auto;
+  min-width: 0;
+  height: 3.47em;
+  background: #fff;
+  border: 1px solid #8e918f;
+  border-radius: 0.25em;
+}
+
+.field:focus-within {
+  border: 2px solid #0b57d0;
+}
+
+.fieldLabel {
+  position: absolute;
+  z-index: 1;
+  top: -0.66em;
+  left: 0.7em;
+  padding: 0 0.4em;
+  font-size: 0.75em;
+  line-height: 1.2;
+  color: #444746;
+  background: #fff;
+}
+
+.fieldInput {
+  width: 100%;
+  height: 100%;
+  padding: 0 1.05em;
+  font-family: inherit;
+  font-size: 1em;
+  font-variant-numeric: tabular-nums;
+  color: #1f1f1f;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  outline: none;
+}
+
+.fieldInput::placeholder {
+  color: #9aa0a6;
+  letter-spacing: 0.22em;
+}
+
+/* -------------------------------------------------------- success / SSO */
+
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100%;
+  padding-top: 2.6em;
+}
+
+.doneBadge {
+  display: grid;
+  place-items: center;
+  width: 3.1em;
+  height: 3.1em;
+  margin-bottom: 1.3em;
+  background: #e6f4ea;
+  border-radius: 50%;
+}
+
+.check {
+  width: 1.7em;
+  height: 1.7em;
+}
+
+.done .actions,
+.done .link {
+  margin-top: auto;
+}
+
+.done .actions {
+  justify-content: flex-end;
+}
+
+/* ------------------------------------------------------------- pending */
+
+.pending {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  min-height: 12em;
+  font-size: 0.9375em;
+  color: #444746;
+}
+
+.pendingSpinner {
+  display: block;
+  width: 1.35em;
+  height: 1.35em;
+  border: 2px solid rgba(11, 87, 208, 0.22);
+  border-top-color: #0b57d0;
+  border-radius: 50%;
+  animation: twofa-spin 0.75s linear infinite;
+}
+
+@keyframes twofa-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------------------------------------- "try another way" */
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  margin: 1.1em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.method {
+  width: 100%;
+  padding: 0.85em 1em;
+  font-family: inherit;
+  font-size: 0.8125em;
+  line-height: 1.4;
+  color: #1f1f1f;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #747775;
+  border-radius: 0.55em;
+  cursor: pointer;
+}
+
+.method:hover {
+  background: #f8fafd;
+  border-color: #444746;
+}
+
+/* ---------------------------------------------------------- responsive */
+
+@media (max-width: 820px) {
+  .card {
+    min-height: 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.6em 0;
+  }
+
+  .logo {
+    width: 2.3em;
+    height: 2.3em;
+  }
+
+  .title {
+    margin-top: 1.15em;
+    font-size: 2em;
+  }
+
+  .subtitle {
+    margin-top: 1em;
+    max-width: none;
+  }
+
+  .resend {
+    display: none;
+  }
+
+  .mobileResend {
+    display: block;
+    margin-top: 1.6em;
+  }
+
+  .panelEyebrow,
+  .panelTitle,
+  .panelBody {
+    max-width: none;
+  }
+
+  .actions {
+    justify-content: space-between;
+  }
+
+  .right {
+    align-self: stretch;
+  }
+
+  .tapPanel,
+  .codeForm,
+  .done {
+    min-height: 0;
+    padding-top: 1.2em;
+  }
+
+  .tapDigits {
+    margin: 0.2em 0 0.8em;
+    font-size: 2.75em;
+  }
+
+  .actions {
+    margin-top: 0;
+    padding-top: 1.9em;
+  }
+
+  .phoneRow {
+    margin-top: 1.6em;
+  }
+
+  .pending {
+    min-height: 5em;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,304 @@
+/* Same shell as DetailsFlow: photo + brand on the left, light panel on the
+   right. Sizes are em-based against one base so it scales like the rest. */
+
+.page {
+  font-size: clamp(13px, 1.25vw, 26px);
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #faf9f5;
+  color: #0f2018;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------ left panel */
+
+.photoLayer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 58%;
+  overflow: hidden;
+  background: #06281a;
+}
+
+.brand {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 50.4%;
+  max-width: 50.4%;
+  color: #fff;
+}
+
+.photo {
+  object-fit: cover;
+  object-position: 100% 50%;
+  z-index: 0;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(3, 20, 12, 0.86) 0%, rgba(3, 20, 12, 0.5) 38%, rgba(3, 20, 12, 0.08) 68%, rgba(3, 20, 12, 0.24) 100%),
+    linear-gradient(0deg, rgba(3, 20, 12, 0.55) 0%, rgba(3, 20, 12, 0) 45%);
+}
+
+.brandInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: 1.7em 2.5em 2em 4em;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.42em;
+}
+
+.logoStar {
+  fill: #fff;
+}
+
+.logoWord {
+  font-size: 1.02em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.kickerDark {
+  margin: 5.2em 0 0;
+  font-size: 0.47em;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.brandTitle {
+  margin: 0.5em 0 0;
+  max-width: 9em;
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: 1.72em;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.brandTitle em {
+  font-style: italic;
+  color: #c8e86a;
+}
+
+.rule {
+  display: block;
+  width: 2.6em;
+  height: 2px;
+  margin: 1.5em 0 1.3em;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.brandCopy {
+  margin: 0;
+  max-width: 26em;
+  font-size: 0.62em;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ----------------------------------------------------------- right panel */
+
+.panel {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0 3.44em 2.4em 4em;
+  background: #faf9f5;
+  border-top-left-radius: 4.5em;
+  overflow-y: auto;
+}
+
+.topLockup {
+  position: absolute;
+  top: 3.76em;
+  right: 2.65em;
+  display: flex;
+  align-items: center;
+  gap: 1.4em;
+  font-size: 0.47em;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #5f7f74;
+}
+
+.topRule {
+  display: block;
+  width: 3.4em;
+  height: 2px;
+  background: #a9bdb3;
+}
+
+.panelInner {
+  padding-top: 7em;
+  max-width: 33em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4em;
+  height: 2.4em;
+  margin-bottom: 1.5em;
+  border-radius: 50%;
+  background: #0b5d3b;
+  color: #fff;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.5em;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #4a7f6b;
+}
+
+.title {
+  margin: 0.3em 0 0;
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: 1.56em;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #00180e;
+}
+
+.lede {
+  margin: 1.1em 0 0;
+  font-size: 0.72em;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #0f2018;
+}
+
+.note {
+  margin: 1.1em 0 0;
+  font-size: 0.64em;
+  line-height: 1.55;
+  color: #818297;
+}
+
+.steps {
+  margin: 2em 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.1em;
+}
+
+.steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9em;
+  font-size: 0.62em;
+  line-height: 1.5;
+  color: #3c4a44;
+}
+
+.stepNumber {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  border: 1px solid #cfe0d6;
+  background: #fff;
+  font-size: 0.82em;
+  font-weight: 700;
+  color: #0b5d3b;
+}
+
+.footer {
+  margin: 2.2em 0 0;
+  padding-top: 1.4em;
+  border-top: 1px solid #e6e6de;
+  font-size: 0.58em;
+  letter-spacing: 0.01em;
+  color: #9a9cae;
+}
+
+/* ----------------------------------------------------------- responsive */
+
+@media (max-width: 900px) {
+  .page {
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .photoLayer {
+    width: 100%;
+    height: 17em;
+    bottom: auto;
+  }
+
+  .brand {
+    flex: 0 0 auto;
+    max-width: none;
+    min-height: 17em;
+  }
+
+  .brandInner {
+    padding: 1.5em 1.6em 1.8em;
+  }
+
+  .kickerDark {
+    margin-top: 2.4em;
+  }
+
+  .brandTitle {
+    max-width: 12em;
+  }
+
+  .rule,
+  .brandCopy {
+    display: none;
+  }
+
+  .panel {
+    padding: 0 1.6em 2.5em;
+    border-top-left-radius: 2.6em;
+    border-top-right-radius: 2.6em;
+    margin-top: -1.4em;
+    overflow: visible;
+  }
+
+  .topLockup {
+    display: none;
+  }
+
+  .panelInner {
+    padding-top: 2.4em;
+  }
+}
+
+@media (max-width: 520px) {
+  .title {
+    font-size: 1.4em;
+  }
+}

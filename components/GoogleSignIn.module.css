@@ -1,0 +1,448 @@
+/* ------------------------------------------------------------------ shell */
+
+.page {
+  /* One knob: every measurement below is em against this base.
+     It reaches the reference size at 1081px wide (16px) and then stops at
+     18px, so the card stays a normal size on 1920px screens instead of
+     ballooning to the full width. */
+  font-size: clamp(11px, 1.48vw, 18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 1.5em 0;
+  background: #f0f4f9;
+  color: #1f1f1f;
+}
+
+.wrap {
+  width: 64.69em;
+  max-width: calc(100% - 2em);
+}
+
+/* ------------------------------------------------------------------- card */
+
+.card {
+  min-height: 23.97em;
+  padding: 2.375em 2.03em 2.2em 2.28em;
+  background: #fff;
+  border-radius: 1.44em;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 31.66em 28.72em;
+  align-items: start;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.logo {
+  display: block;
+  width: 2.75em;
+  height: 2.75em;
+}
+
+.title {
+  margin: 0.6em 0 0;
+  font-size: 2.84em;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #1f1f1f;
+}
+
+.subtitle {
+  margin: 1.45em 0 0;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #1f1f1f;
+}
+
+/* ----------------------------------------------------------------- fields */
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  padding-top: 4.875em;
+}
+
+.input {
+  width: 100%;
+  height: 3.47em;
+  padding: 0 1.1em;
+  font-family: inherit;
+  font-size: 1em;
+  color: #1f1f1f;
+  background: #fff;
+  border: 1px solid #747775;
+  border-radius: 0.25em;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #3c4043;
+}
+
+.input:focus {
+  border: 2px solid #0b57d0;
+  padding: 0 calc(1.1em - 1px);
+}
+
+.inputError,
+.inputError:focus {
+  border: 1px solid #b3261e;
+  padding: 0 1.1em;
+}
+
+/* ------------------------------------------------------------------ error */
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45em;
+  margin: 0.6em 0 0;
+  font-size: 0.75em;
+  line-height: 1.45;
+  color: #b3261e;
+}
+
+.errorMark {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.05em;
+  font-size: 0.92em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background: #b3261e;
+  border-radius: 50%;
+}
+
+.forgot {
+  align-self: flex-start;
+  margin-top: 0.55em;
+  font-size: 0.875em;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #0b57d0;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+.guest {
+  margin: 3.27em 0 0;
+  font-size: 0.875em;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1f1f1f;
+}
+
+.guest a {
+  font-weight: 500;
+  color: #0b57d0;
+}
+
+.guest a:hover {
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2.6em;
+  margin-top: 2.71em;
+}
+
+.create {
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #0b57d0;
+  white-space: nowrap;
+}
+
+.create:hover {
+  text-decoration: underline;
+}
+
+.next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.64em;
+  height: 2.86em;
+  padding: 0 1.55em;
+  font-family: inherit;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #fff;
+  background: #0b57d0;
+  border: 0;
+  border-radius: 99em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.next:hover {
+  background: #0f5bd4;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px rgba(60, 64, 67, 0.15);
+}
+
+.next:active {
+  background: #0842a0;
+}
+
+.next:disabled {
+  cursor: default;
+  opacity: 0.92;
+}
+
+.next:disabled:hover {
+  background: #0b57d0;
+  box-shadow: none;
+}
+
+/* Gmail-style spinner that replaces the label while the form is submitting. */
+.spinner {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: next-spin 0.7s linear infinite;
+}
+
+@keyframes next-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------------------------------------------- password step */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62em;
+  max-width: 100%;
+  margin-top: 1.35em;
+  height: 2.86em;
+  padding: 0 0.95em 0 0.28em;
+  font-family: inherit;
+  font-size: 0.875em;
+  color: #3c4043;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #747775;
+  border-radius: 99em;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.chip:hover {
+  background: #f8fafd;
+  border-color: #444746;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2em;
+  height: 2em;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #fff;
+  background: #0b57d0;
+  border-radius: 50%;
+}
+
+.chipEmail {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chipCaret {
+  flex: 0 0 auto;
+  width: 0.75em;
+  height: 0.48em;
+  color: #5f6368;
+}
+
+.passwordLabel {
+  margin-bottom: 0.55em;
+  font-size: 0.8125em;
+  font-weight: 500;
+  color: #3c4043;
+}
+
+.passwordBox {
+  display: flex;
+  align-items: center;
+  height: 3.47em;
+  background: #fff;
+  border: 1px solid #747775;
+  border-radius: 0.25em;
+}
+
+.passwordBox:focus-within {
+  border: 2px solid #0b57d0;
+}
+
+.passwordInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0 1.1em;
+  font-family: inherit;
+  font-size: 1em;
+  color: #1f1f1f;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.revealToggle {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 2.7em;
+  height: 100%;
+  padding: 0;
+  color: #5f6368;
+  background: none;
+  border: 0;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.revealToggle:hover {
+  color: #1f1f1f;
+}
+
+.eye {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.showRow {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.65em;
+  margin-top: 0.85em;
+  font-size: 0.875em;
+  color: #1f1f1f;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 1.05em;
+  height: 1.05em;
+  margin: 0;
+  accent-color: #0b57d0;
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------------- footer */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.7em;
+  padding: 0 0.9em;
+  font-size: 0.875em;
+  color: #1f1f1f;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.35em 0;
+  font-family: inherit;
+  font-size: 1em;
+  color: #1f1f1f;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.caret {
+  width: 0.95em;
+  height: 0.6em;
+  color: #5f6368;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1.75em;
+}
+
+.links a {
+  padding: 0.35em 0;
+  color: #1f1f1f;
+}
+
+.links a:hover {
+  color: #0b57d0;
+}
+
+/* ------------------------------------------------------------- responsive */
+
+@media (max-width: 820px) {
+  .page {
+    font-size: clamp(12px, 3.4vw, 18px);
+    /* Keeps the card centred vertically; the page still grows (and scrolls)
+       if the content is taller than the viewport. */
+    align-items: center;
+  }
+
+  .card {
+    min-height: 0;
+    padding: 2em 1.5em 1.8em;
+    border-radius: 1.2em;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .fields {
+    padding-top: 2.4em;
+  }
+
+  .guest {
+    margin-top: 2.2em;
+  }
+
+  .actions {
+    margin-top: 2em;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    gap: 0.8em;
+  }
+}

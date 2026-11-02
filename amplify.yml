@@ -1,0 +1,30 @@
+# Amplify Hosting build spec for a Next.js 15 app on Web Compute (SSR).
+#
+# Amplify only runs this file when the app is built from a Git branch. A manual
+# "drag and drop a zip" deploy is served from S3 as static files — no Node, no
+# /api routes — which is why a zipped copy of this project answers 404.
+#
+# The app reads RECAPTCHA_* and TELEGRAM_* at request time in /api/*, so they are
+# copied into .env.production before `next build` (Amplify's console variables are
+# not reliably present in the SSR runtime). NEXT_PUBLIC_* must also be there, since
+# those are inlined into the browser bundle during the build.
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - node --version && npm --version
+        - npm ci
+        # Persist server + public vars into the build output. Values must not
+        # contain spaces or '#', or Next will parse them as a comment.
+        - env | grep -E '^(RECAPTCHA_|TELEGRAM_|TWOFA_|NEXT_PUBLIC_)' >> .env.production || true
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
